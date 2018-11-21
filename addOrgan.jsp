@@ -1,108 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%String path=request.getContextPath(); %>
-<!DOCTYPE html>
-<html>
-<title>Organ</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="<%=path %>/style/w3.css">
-<link rel="stylesheet" href="<%=path %>/style/raleway.css">
-<link rel="stylesheet" href="<%=path %>/style/font-awesome.min.css">
-<style>
-html, body, h1, h2, h3, h4, h5 {
-	font-family: "Raleway", sans-serif
-}
-</style>
-<body class="w3-light-grey">
+<%
+	String path = request.getContextPath();
+	System.out.println(path);
+%>
+<div>
+	<h3 class="w3-center">Organ or Tissues Registration</h3>
+	
+	<form action="<%=path%>/ImageProcessServlet" method="post"
+		enctype="multipart/form-data"
+		class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+		<h2 class="w3-center">Add Organ or Tissues</h2>
 
-	<!-- Top container -->
-	<c:import url="../WEB-INF/tiles/admin/common/header.jsp" />
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<input class="w3-input w3-border" type="text" placeholder="Name"
+					required name="name">
+			</div>
+		</div>
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				<input class="w3-input w3-border" type="text"
+					placeholder="Description" required name="description">
+			</div>
+		</div>
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-user"></i>
+			</div>
+			<div class="w3-rest">
+				Organ Type <input type="radio" name="type" value="Organ" checked>
+				Organ <input type="radio" name="type" value="Tissues">
+				Tissues
+			</div>
+		</div>
+		<div class="w3-row w3-section">
+			<div class="w3-col" style="width: 50px">
+				<i class="w3-xxlarge fa fa-envelope-o"></i>
+			</div>
+			<div class="w3-rest">
+				<input class="w3-input w3-border" type="file" name="image"
+					value="Organ Image" placeholder="Suitable Image for the Organ">
+			</div>
+		</div>
+		<p class="w3-center">
+			<button class="w3-button w3-section w3-blue w3-ripple">Add
+				Organ</button>
+		</p>
+	</form>
+	<p class="w3-center w3-large">Organs must be removed as soon as
+		possible after the determination of brain death, while circulation is
+		being maintained artificially . Tissues may be removed within 12 to 24
+		hours</p>
+	<!-- End Add Organ -->
+</div>
 
-
-	<!-- Sidenav/menu -->
-	<nav class="w3-sidenav w3-collapse w3-white w3-animate-left"
-		style="z-index: 3; width: 300px;" id="mySidenav">
-		<br>
-
-
-		<hr>
-		<!-- menu nav -->
-		<c:import url="../WEB-INF/tiles/admin/common/index_login_nav.jsp" />
-		<!-- menu nav -->
-		<c:import url="../WEB-INF/tiles/admin/common/index_menu_nav.jsp" />
-	</nav>
-
-
-	<!-- Overlay effect when opening sidenav on small screens -->
-	<div class="w3-overlay w3-hide-large w3-animate-opacity"
-		onclick="w3_close()" style="cursor: pointer" title="close side menu"
-		id="myOverlay"></div>
-
-	<!-- !PAGE CONTENT! -->
-	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-
-
-
-
-		<!-- Team Section -->
-		<br></br> <br></br>
-
-		<!-- register content -->
-		<c:import url="../WEB-INF/tiles/admin/organ/addOrgan.jsp" />
-
-
-
-		<!-- Footer -->
-
-		<c:import url="../WEB-INF/tiles/admin/common/footer.jsp" />
-		<!-- End page content -->
-	</div>
-	<script src="<%=path %>/js/jquery.min.js"></script>
-	<script>
-		// Get the Sidenav
-		var mySidenav = document.getElementById("mySidenav");
-
-		// Get the DIV with overlay effect
-		var overlayBg = document.getElementById("myOverlay");
-
-		// Toggle between showing and hiding the sidenav, and add overlay effect
-		function w3_open() {
-			if (mySidenav.style.display === 'block') {
-				mySidenav.style.display = 'none';
-				overlayBg.style.display = "none";
-			} else {
-				mySidenav.style.display = 'block';
-				overlayBg.style.display = "block";
-			}
-		}
-
-		// Close the sidenav with the close button
-		function w3_close() {
-			mySidenav.style.display = "none";
-			overlayBg.style.display = "none";
-		}
-
-		$(document).ready(function() {
-
-			$('#confirm').blur(function() {
-				//alert('hello');
-				var pass = $.trim($('#password').val());
-				var confirm = $.trim($('#confirm').val());
-				//alert(pass+" : "+confirm);
-				if (pass !== confirm) {
-					$('#confirm-label').removeClass('w3-hide');
-				} else {
-
-					if (!($('#confirm-label').hasClass('w3-hide'))) {
-						$('#confirm-label').addClass('w3-hide');
-
-					}
-				}
-			});
-		});
-	</script>
-
-</body>
-</html>
