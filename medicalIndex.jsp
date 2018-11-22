@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="style/w3.css">
 <link rel="stylesheet" href="style/raleway.css">
 <link rel="stylesheet" href="style/font-awesome.min.css">
+<script type="text/javascript" src="js/jquery.min.js"></script>
 <style>
 html, body, h1, h2, h3, h4, h5 {
 	font-family: "Raleway", sans-serif
@@ -39,15 +40,15 @@ html, body, h1, h2, h3, h4, h5 {
 
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-main" style="margin-left: 300px; margin-top: 43px;">
-		<c:import url="WEB-INF/tiles/index/index_main_content.jsp" />
-		<!-- Header -->
-		<c:import url="WEB-INF/tiles/index/index_content.jsp" /> 
 
+		<!-- Header -->
+		<c:import url="WEB-INF/tiles/medical/index_content.jsp" />
+		
 		<!-- body info -->
-	<%-- 	<c:import url="WEB-INF/tiles/index/index_content_info.jsp" /> --%>
+		<c:import url="WEB-INF/tiles/medical/index_content_info.jsp" />
 		<!-- Footer -->
 		<c:import url="WEB-INF/tiles/common/footer.jsp" />
-		<!-- 	<footer class="w3-container w3-padding-16 w3-light-grey">
+	<!-- 	<footer class="w3-container w3-padding-16 w3-light-grey">
 			<h4>FOOTER</h4>
 			<p>
 				Powered by <a href="http://www.w3schools.com/w3css/default.asp"
