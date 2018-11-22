@@ -30,7 +30,7 @@
 		<%
 			} else {
 		%>
-		<div class="w3-container w3-row ">
+		<div class="w3-container w3-row  w3-margin w3-blue w3-round ">
 		<%  
 		if (bean.getType().equals("doctor")) {
 			%>
@@ -46,14 +46,18 @@
 				<%
 		}
 		%>
+		<hr>
 			<div class="w3-col s4">
 				<!-- <img src="img/avatar2.png" class="w3-circle w3-margin-right"
 					style="width: 46px"> -->
 			</div>
-			<div class="w3-col s8">
-				<span>Welcome, <strong> <span class="w3-large"><%=bean.getName()%></span></strong></span> <a href="logout.jsp" title="Logout"
+			<div class="w3-col  w3-margin-bottom">
+			Welcome,
+			
+				<span> <strong> <span class="w3-xlarge"><%=bean.getName()%></span></strong></span> <a href="logout.jsp" title="Logout"
 					class="w3-hover-none w3-hover-text-red w3-show-inline-block"><i class="fa fa-power-off" aria-hidden="true"></i></a>
 			</div>
+			
 		</div>
 		<%
 			}
