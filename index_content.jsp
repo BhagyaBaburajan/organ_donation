@@ -1,250 +1,139 @@
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="com.mynute.uit.organ.Database"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="com.mynute.uit.organ.OrganRegisterBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="UTF-8"%>
-<header class="w3-container" style="padding-top: 22px">
-	<h5>
-		<b><i class="fa fa-dashboard"></i> Dashboard</b>
-	</h5>
-</header>
-
-<!-- <div class="w3-row-padding w3-margin-bottom">
-	<div class="w3-quarter">
-		<div class="w3-container w3-red w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="	fa fa-heartbeat w3-xxxlarge"></i>
-			</div>
-			<div class="w3-right">
-				<h3>52</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Heart <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-			</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-blue w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-eye w3-xxxlarge"></i>
-			</div>
-			<div class="w3-right">
-				<h3>99</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Eye (Cornea) <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-teal w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-medkit w3-xxxlarge"></i>
-			</div>
-			<div class="w3-right">
-				<h3>23</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Lungs <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-orange w3-hover-shadow w3-text-white w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-ambulance w3-xxxlarge"></i>
-			</div>
-			<div class="w3-right">
-				<h3>50</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Kidney <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-
-</div> -->
-
-<!-- <div class="w3-row-padding w3-margin-bottom">
-	<div class="w3-quarter">
-		<div class="w3-container w3-yellow w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-sitemap w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>52</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Liver <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-green w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-thermometer-half w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>99</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Pancreas <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-pink w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-universal-access w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>23</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Intestine <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-purple w3-hover-shadow w3-text-white w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-tachometer w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>50</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Bone marrow <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-
-</div> -->
-<!-- 
-<div class="w3-row-padding w3-margin-bottom">
-	<div class="w3-quarter">
-		<div class="w3-container w3-cyan w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-recycle w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>52</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Blood Vessels <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-blue-grey w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-puzzle-piece w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>99</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Heart Valve <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-amber w3-hover-shadow w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-snowflake-o w3-xxxlarge" aria-hidden="true"></i>
-			</div>
-			<div class="w3-right">
-				<h3>23</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Blood transfusion <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-	<div class="w3-quarter">
-		<div class="w3-container w3-light-green w3-hover-shadow w3-text-white w3-padding-8">
-			<div class="w3-left">
-				<i class="fa fa-superpowers w3-xxxlarge" aria-hidden="true" ></i>
-			</div>
-			<div class="w3-right">
-				<h3>50</h3>
-			</div>
-			<div class="w3-clear"></div>
-			<h4>Stomach <br><span class="w3-opacity w3-medium">Sep 28, 2014, 10:15
-							PM</span></h4>
-		</div>
-	</div>
-
-</div> -->
-<!-- Team Section -->
+	
 <div class="w3-container w3-padding" id="team">
-	<h3 class="w3-center">Transplant Coordinators</h3>
-	<p class="w3-center w3-large">The ones who runs this Organisation</p>
-	<div class="w3-row-padding w3-grayscale" style="margin-top: 64px">
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<div class="w3-card-2">
-				<img src="img/doctor.jpg" alt="John" style="width: 100%">
+	<h3 class="w3-center">
+		Requests from <b>Donors</b>and <b> Seekers</b>
+	</h3>
+	<%
+		OrganRegisterBean bean = (OrganRegisterBean) session.getAttribute("user");
+		Connection con = null;
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		String sql = "select R.type,R.id,R.name,DR.district,DR.address,R.email,R.phone,DR.msg_status,O.name AS organ_name,DR.donor_name from detailed_register DR,register R,organ_list O where DR.doctor_id=? and DR.reg_id=R.id and DR.organ_id=O.id";
+		try {
+			con = Database.getConnection();
+			st = con.prepareStatement(sql);
+			st.setInt(1, bean.getId());
+			rs = st.executeQuery();
+			int row = 0;
+			while (rs.next()) {
+					if (row == 0) {
+	%>
+	<!--  Row -->
+	<div class="w3-row-padding w3-grayscale"
+		style="margin-top: 64px; height: 300px;">
+		<%
+			}
+		%>
+		<!-- column -->
+		
+		
+		<div class="w3-col l3 m6 w3-margin-bottom ">
+		 <%if(rs.getString("donor_name")==null||rs.getString("donor_name").equals("null")){
+			 %>
+			 <div class="w3-card-2 w3-yellow">
+			 
+			 <% 
+			
+		 }else{
+			 %>
+			 <div class="w3-card-2">
+			 
+			 <% 
+			  
+		 }%>
+			
 				<div class="w3-container">
-					<h3>John Doe</h3>
-					<p class="w3-opacity">Service Line Manager</p>
-					<p>"This program is a major milestone which helped to decide my
-						career as Transplant Coordinator.".</p>
+					<h4>
+						<b><%=rs.getString("type")%> (<span class="w3-text-red"> <%=rs.getString("organ_name")%></span> )</b>
+					</h4>
+					<h3><%=rs.getString("name")%></h3>
+					<p class="w3-opacity"><%=rs.getString("phone")%></p>
+					<p>
+						<span><%=rs.getString("email")%></span><br> <span><%=rs.getString("address")%></span>
+						<br> <span><%=rs.getString("district")%></span>
+					</p>
+					<% if(rs.getInt("msg_status")==0){ %>
+					<p>
+					 <p class="msg-p w3-yellow"></p>
+					    <input type="hidden" class="id" value="<%=rs.getInt("id")%>">
+						<button class="w3-btn-block w3-green send">
+							<i class="fa fa-plus"></i> Send Message
+						</button>
+					</p>
+					<% }else{  %>
+					<p>
+					    <input type="hidden" class="id" value="<%=rs.getInt("id")%>">
+					    <p class="msg-p w3-yellow"></p>
+						<button class="w3-btn-block w3-red send">
+							<i class="fa fa-plus"></i> Send again Message
+						</button>
+					</p>
+					<% }%>
 					<p>
 						<button class="w3-btn-block">
-							<i class="fa fa-envelope"></i> Contact
+							<i class="fa fa-plus"></i> Add Details
 						</button>
 					</p>
 				</div>
 			</div>
 		</div>
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<div class="w3-card-2">
-				<img src="img/doctor-female.jpg" alt="Jane" style="width: 100%">
-				<div class="w3-container">
-					<h3>Anja Doe</h3>
-					<p class="w3-opacity">Transplant Coordinator</p>
-					<p>“It was very informative and knowledgeable and also learnt
-						information apart from our experience.”</p>
-					<p>
-						<button class="w3-btn-block">
-							<i class="fa fa-envelope"></i> Contact
-						</button>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<div class="w3-card-2">
-				<img src="img/doctor1.jpg" alt="Mike" style="width: 100%">
-				<div class="w3-container">
-					<h3>Mike Ross</h3>
-					<p class="w3-opacity">Social Work (Medical & Psychiatry)</p>
-					<p>“We were sent by the management for the training programme
-						and didn’t really know anything about organ donation. But having
-						come, we have learnt a lot and are now going back confident that
-						we can create awareness about the cause.”</p>
-					<p>
-						<button class="w3-btn-block">
-							<i class="fa fa-envelope"></i> Contact
-						</button>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="w3-col l3 m6 w3-margin-bottom">
-			<div class="w3-card-2">
-				<img src="img/doctor2.jpg" alt="Dan" style="width: 100%">
-				<div class="w3-container">
-					<h3>Dan Star</h3>
-					<p class="w3-opacity">Senior Hospital Administrator,</p>
-					<p>“The one week training programme was extremely useful. I now
-						want to learn more and plan to join the one year E-learning
-						programme.”</p>
-					<p>
-						<button class="w3-btn-block">
-							<i class="fa fa-envelope"></i> Contact
-						</button>
-					</p>
-				</div>
-			</div>
-		</div>
+		<%
+				row++;
+					if (row >= 4) {
+		%>
 	</div>
-</div>
-
+	<%
+						row = 0;
+					}
+			}
+	%>
+	<!--  end row -->
+	<%
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (con != null)
+					con.close();
+				if (st != null)
+					st.close();
+				if (rs != null)
+					rs.close();
+			} catch (Exception e) {
+			}
+		}
+	%>
+	</div>
+	<script>
+	$(function(){
+		
+		$(".send").click(function(){
+			console.log("testing");
+			var msg=$(this);
+			$(this).parent().children('.msg-p').text("SMS sending..");
+			var id = $(this).parent().children('.id').val();
+			console.log(id);
+			sms={};
+			sms.url="SetSmsStatusServlet";
+			sms.type="POST";
+			sms.data={
+					"reg_id":id
+			}
+			sms.success=function(data){
+				console.log("success to update");
+				msg.parent().children('.msg-p').html("sms send success");
+				msg.remove();
+			};
+			$.ajax(sms);
+		});
+	});
+	</script>
+	
