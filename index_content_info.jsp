@@ -1,12 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    <%String path=request.getContextPath(); %>
 <div class="w3-container w3-section">
 			<div class="w3-row-padding" style="margin: 0 -16px">
 				<div class="w3-half">
 					<h5>Distribution of solid organ transplant activity by  Global Burden of Disease Study.</h5>
 					
-					<img src="<%=path %>/img/region.jpg" style="width: 100%;height:250px;"
+					<img src="img/region.jpg" style="width: 100%;height:250px;"
 						alt="Google Regional Map">
 				</div>
 				<div class="w3-half">
